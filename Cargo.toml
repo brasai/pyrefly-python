@@ -1,0 +1,18 @@
+[package]
+name = "pyrefly_binding"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "pyrefly_native_binding" # Nome do módulo Python resultante
+crate-type = ["cdylib"]
+
+[dependencies]
+pyo3 = { version = "0.21.2", features = ["extension-module"] } # Usar uma versão recente do PyO3
+
+# Assumindo que o crate 'pyrefly' está em um diretório irmão
+# Ajustar o path conforme a estrutura real do projeto.
+pyrefly = { path = "./pyrefly" }
+
+# lsp-types é necessário porque pyrefly::playground::AutoCompletionItem usa lsp_types::CompletionItemKind
+lsp-types = { version = "0.95.0", features = ["proposed"] } # Versão compatível com a usada pelo Pyrefly (0.94.1 ou superior)

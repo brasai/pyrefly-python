@@ -1,0 +1,18 @@
+[build-system]
+requires = ["maturin>=1.5,<2"] # Usar uma versão recente do Maturin
+build-backend = "maturin"
+
+[project]
+name = "pyrefly_binding"
+version = "0.1.0"
+requires-python = ">=3.8" # PyO3 0.21 requer Python 3.8+
+classifiers = [
+    "Programming Language :: Rust",
+    "Programming Language :: Python :: Implementation :: CPython",
+    # Adicionar mais classificadores conforme necessário
+]
+
+[tool.maturin]
+features = ["pyo3/extension-module"]
+# Se o crate pyrefly tiver features que precisam ser ativadas pelo binding:
+# cargo-extra-args = "--features pyrefly/feature_name"
